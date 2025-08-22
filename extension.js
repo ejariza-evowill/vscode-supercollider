@@ -72,7 +72,10 @@ function evalSelection(editor) {
         : editor.document.getText(selection);
     const repl = getRepl();
     _replChannel.show(true);
-    repl.stdin.write(text + '\n');
+    const lines = text.split(/\r?\n/);
+    for (const line of lines) {
+        repl.stdin.write(line + '\n');
+    }
 }
 // END REPL
 
