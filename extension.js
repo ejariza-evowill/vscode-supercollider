@@ -66,15 +66,14 @@ function getRepl() {
 }
 
 function evalSelection(editor) {
-    const selection = editor.selection;
-    const text = selection.isEmpty
-        ? editor.document.lineAt(selection.active.line).text
-        : editor.document.getText(selection);
     const repl = getRepl();
     _replChannel.show(true);
-    const lines = text.split(/\r?\n/);
-    for (const line of lines) {
-        repl.stdin.write(line + '\n');
+
+    for (const selection of editor.selections) {
+        const text = selection.isEmpty
+            ? editor.document.lineAt(selection.active.line).text
+            : editor.document.getText(selection);
+        repl.stdin.write(text + '\n');
     }
 }
 // END REPL
