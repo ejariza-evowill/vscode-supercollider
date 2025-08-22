@@ -19,7 +19,8 @@
     "activationEvents": [
         "onLanguage:supercollider",
         "onCommand:supercollider.execInTerminal",
-        "onCommand:supercollider.killTerminal"
+        "onCommand:supercollider.killTerminal",
+        "onCommand:supercollider.eval"
     ],
     "main": "./extension",
     "icon": "icon.png",
@@ -49,6 +50,11 @@
             {
                 "command": "supercollider.killTerminal",
                 "key": "ctrl+."
+            },
+            {
+                "command": "supercollider.eval",
+                "key": "ctrl+enter",
+                "when": "editorLangId == supercollider"
             }
         ],
         "commands": [
@@ -60,6 +66,11 @@
             {
                 "command": "supercollider.killTerminal",
                 "title": "Kill the SuperCollider Terminal",
+                "category": "SuperCollider"
+            },
+            {
+                "command": "supercollider.eval",
+                "title": "Evaluate selection in SuperCollider REPL",
                 "category": "SuperCollider"
             }
         ],
