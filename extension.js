@@ -73,7 +73,7 @@ function evalSelection(editor) {
         const text = selection.isEmpty
             ? editor.document.lineAt(selection.active.line).text
             : editor.document.getText(selection);
-        repl.stdin.write(text + '\n');
+        repl.stdin.write(text + String.fromCharCode(0x1b) + '\n');
     }
 }
 // END REPL
